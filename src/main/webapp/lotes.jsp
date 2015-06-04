@@ -4,6 +4,10 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.googlecode.objectify.Key" %>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+
+<%@ page import="com.proyecto.ControlCostesGanaderia.Lote" %>
 
 <html>
 <head>
@@ -18,8 +22,11 @@
 <body>
 
 <%
+	String id = request.getParameter("id");
 	String descripcion = request.getParameter("descripcion");
-
+	
+	pageContext.setAttribute("id", id);
+	pageContext.setAttribute("descripcion", descripcion);
 %>
 
 	<header>
@@ -63,9 +70,10 @@
     	</div>
 	</form>
 	<%
+		
 		if(descripcion!=null){
 	%>
-		<p>Nuevo lote ${fn:length(descripcion)}.</p>
+		<p>Nuevo lote: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion)}</p>
 		
 	<%
 		}else{}
