@@ -1,0 +1,44 @@
+#central{
+	width: 80%;
+	margin: 0 auto;
+}
+
+header{
+	background-color: #4fc1e9;
+	padding: 10px;
+}
+
+title{
+	color: #000;
+}
+
+h1{
+	font-size: 30px;
+}
+
+#menu{
+	z-index: 2;
+	position: relative;
+	background-color: #3bafda;
+	/*padding-bottom: 5px;
+	padding-top: 5px;*/
+}
+
+li{
+	display:inline;	
+	border-right: 1px solid;
+	background-color: #3bafda;
+}
+
+a{
+	font-size: 18px;
+	padding-right: 9px;
+	padding-left: 9px;
+	color: white;
+	
+}
+
+a.text{
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
