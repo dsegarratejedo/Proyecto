@@ -7,7 +7,7 @@
 <%@ page import="com.googlecode.objectify.Key" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 
-<%@ page import="com.proyecto.ControlCostesGanaderia.Lote" %>
+<%@ page import="com.proyecto.ControlCostesGanaderia.MateriaPrima" %>
 
 <html>
 <head>
@@ -24,9 +24,11 @@
 <%
 	String id = request.getParameter("id");
 	String descripcion = request.getParameter("descripcion");
+	String existencias = request.getParameter("existencias");
 	
 	pageContext.setAttribute("id", id);
 	pageContext.setAttribute("descripcion", descripcion);
+	pageContext.setAttribute("existencias", existencias);
 %>
 
 	<header>
@@ -49,13 +51,9 @@
 
 <div id="central">
 
-<%
-    String lote = request.getParameter("");
-%>
-
-	<form action="/servletlotes" method="post">
+	<form action="/servletmateriasprimas" method="post">
     	<div>
-    		<h1>Lote:</h1>
+    		<h1>Materia prima:</h1>
     		
     		<table>
     			<tr><td>ID:</td>
@@ -63,6 +61,9 @@
     			</tr>
     			<tr><td>Descripción: </td>
     				<td><textarea name="descripcion" rows="3" cols="60"></textarea></td>
+    			</tr>
+    			<tr><td>Existencias:</td>
+    				<td><input type="text" name="existencias"></td>
     			</tr>
     		</table>
     		<div><input type="submit" value="Añadir"/></div>
@@ -73,7 +74,7 @@
 		
 		if(descripcion!=null){
 	%>
-		<p>Nuevo lote: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion)}</p>
+		<p>Nueva materia prima: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion), ${fn:escapeXml(existencias)}</p>
 		
 	<%
 		}else{}

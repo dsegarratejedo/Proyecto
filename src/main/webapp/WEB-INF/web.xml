@@ -13,6 +13,15 @@
       <servlet-name>servletlotes</servlet-name>
       <url-pattern>/servletlotes</url-pattern>
     </servlet-mapping>
+    	<servlet>
+      <servlet-name>servletmateriasprimas</servlet-name>
+      <servlet-class>com.proyecto.ControlCostesGanaderia.MateriasPrimasServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>servletmateriasprimas</servlet-name>
+      <url-pattern>/servletmateriasprimas</url-pattern>
+    </servlet-mapping>
+    
     
     <filter>
     	<filter-name>ObjectifyFilter</filter-name>

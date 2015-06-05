@@ -12,19 +12,24 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
-public class LotesServlet extends HttpServlet{
 
+public class MateriaPrimaServlet extends HttpServlet{
+	
 	 public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		    
 		 
 		    String id = req.getParameter("id");
 		    String descripcion = req.getParameter("descripcion");
-		    Lote lote = new Lote(id, descripcion);
+		    String existenciasString = req.getParameter("existencias");
+		    float existencias = Float.parseFloat(existenciasString);
 		    
-		    ObjectifyService.ofy().save().entity(lote).now();
+		    MateriaPrima materiaprima = new MateriaPrima(id, descripcion, existencias);
 		    
-		    resp.sendRedirect("/lotes.jsp?descripcion=" + lote.descripcion + "&id=" + lote.id);
-		    //System.out.println("Guardado...");
+		    //ObjectifyService.ofy().save().entity(materiaprima).now();
 		    
+		    resp.sendRedirect("/materiasprimas.jsp?id=" + materiaprima.id + 
+		    		"&descripcion=" + materiaprima.descripcion +
+		    		"&existencias=" + materiaprima.existencias);    
 	 }
+
 }
