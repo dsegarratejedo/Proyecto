@@ -51,7 +51,7 @@
 
 <div id="central">
 
-	<form action="/servletmateriasprimas" method="post">
+	<form action="/servletmateriaprima" method="post">
     	<div>
     		<h1>Materia prima:</h1>
     		

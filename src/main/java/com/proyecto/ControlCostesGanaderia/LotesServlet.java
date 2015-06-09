@@ -11,6 +11,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.util.Closeable;
 
 public class LotesServlet extends HttpServlet{
 

@@ -12,8 +12,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
-    <link type="text/css" rel="stylesheet" href="/stylesheets/lotes.css">
+    <link type="text/css" rel="stylesheet"  href="/stylesheets/main.css">
+    <link type="text/css" rel="stylesheet"  href="/stylesheets/lotes.css">
     
     <title>Control de costes de gandería</title>
     
@@ -30,7 +30,7 @@
 %>
 
 	<header>
-		<h1>Control de costes ganadería</h1>
+		<h1><a href="/index.jsp" style="text-decoration:none">Control de costes ganadería</a></h1>
     </header>
     <div id="menu">
   		<ul>
@@ -48,36 +48,81 @@
 	</div>
 
 <div id="central">
-
-<%
-    String lote = request.getParameter("");
-%>
-
-	<form action="/servletlotes" method="post">
-    	<div>
-    		<h1>Lote:</h1>
-    		
-    		<table>
-    			<tr><td>ID:</td>
-    				<td><input type="text" name="id"></td>
+	<h1>Lote:</h1>
+	<div id="izquierdo">
+		
+		<div id="formulario_lotes">
+			<form action="/servletlotes" method="post">
+		    	<div>
+		    		
+		    		<table>
+		    			<tr><td>ID:</td>
+		    				<td><input type="text" name="id"></td>
+		    			</tr>
+		    			<tr><td>Descripción: &nbsp</td>
+		    				<td><textarea name="descripcion" rows="3" cols="40"></textarea></td>
+		    			</tr>
+		    		</table>
+		    		<div><input type="submit" value="Añadir"/></div>
+		    		
+		    	</div>
+			</form>
+			<%
+				
+				if(descripcion!=null){
+			%>
+				<p>Nuevo lote: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion)}</p>
+				
+			<%
+				}else{}
+			%>
+		</div>
+		
+		<%
+			List<Lote> lotes = ObjectifyService.ofy()
+				.load()
+				.type(Lote.class)
+				.order("id")
+				.list();		
+			
+		%>
+		
+		<div>
+			<p>Modificar lote:</p>
+			<select>
+				<option value="default" selected>Selecciona un lote</option>
+			
+				<%
+					for(Lote l : lotes){
+						String idLote = l.getId();
+				%>
+				<option value="<%=idLote %>"><%=idLote %></option>
+				<%} %>
+			  
+			</select>
+		
+		</div>
+	</div>
+	
+	<div id="resumen_lotes">
+		<table id="tabla_lotes" >
+    			<tr><th WIDTH="100px">ID</td>
+    				<th>Descripción</td>
     			</tr>
-    			<tr><td>Descripción: </td>
-    				<td><textarea name="descripcion" rows="3" cols="60"></textarea></td>
-    			</tr>
+    				<%
+						for(Lote lote : lotes){
+							pageContext.setAttribute("lote_id", lote.getId());
+							pageContext.setAttribute("lote_descripcion", lote.getDescripcion());
+					%>
+			    			<tr><td>${fn:escapeXml(lote_id)}</td>
+			    				<td>${fn:escapeXml(lote_descripcion)}</td>
+			    			</tr>
+	    			<%
+						}
+					%>
     		</table>
-    		<div><input type="submit" value="Añadir"/></div>
-    		
-    	</div>
-	</form>
-	<%
-		
-		if(descripcion!=null){
-	%>
-		<p>Nuevo lote: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion)}</p>
-		
-	<%
-		}else{}
-	%>
+	</div>
+	
 </div>
 
 </body>

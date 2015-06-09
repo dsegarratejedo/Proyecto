@@ -25,11 +25,11 @@ public class MateriaPrimaServlet extends HttpServlet{
 		    
 		    MateriaPrima materiaprima = new MateriaPrima(id, descripcion, existencias);
 		    
-		    //ObjectifyService.ofy().save().entity(materiaprima).now();
+		    ObjectifyService.ofy().save().entity(materiaprima).now();
 		    
-		    resp.sendRedirect("/materiasprimas.jsp?id=" + materiaprima.id + 
-		    		"&descripcion=" + materiaprima.descripcion +
-		    		"&existencias=" + materiaprima.existencias);    
+		    //resp.sendRedirect("/materiasprimas.jsp?id=" + materiaprima.id + 
+		    //		"&descripcion=" + materiaprima.descripcion +
+		    //		"&existencias=" + existenciasString);    
 	 }
 
 }

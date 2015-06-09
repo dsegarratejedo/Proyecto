@@ -17,7 +17,7 @@
 <body>
 
 	<header>
-		<h1>Control de costes ganadería</h1>
+		<h1><a href="/index.jsp" style="text-decoration:none">Control de costes ganadería</a></h1>
     </header>
     <div id="menu">
   		<ul>
