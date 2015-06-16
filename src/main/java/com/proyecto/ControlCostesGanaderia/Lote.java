@@ -62,10 +62,10 @@ public class Lote {
 	public boolean equals(Object obj) {
 		
 		Lote other = (Lote) obj;
-		if (id!=other.getId()) {
-			return false;			
+		if (this.id.equals(other.getId())) {
+			return true;			
 		}else{
-			return true;
+			return false;
 		}
 	}
 	

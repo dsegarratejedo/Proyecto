@@ -16,27 +16,10 @@
 
 <body>
 
-	<header>
-		<h1><a href="/index.jsp" style="text-decoration:none">Control de costes ganadería</a></h1>
-    </header>
-    <div id="menu">
-  		<ul>
-    		<li><a href="/lotes.jsp" style="text-decoration:none">Lotes</a></li>
-    		<li><a href="/materiasprimas.jsp" style="text-decoration:none">Materias primas</a></li>
-    		<li><a href="/compras.jsp" style="text-decoration:none">Compras</a></li>
-    		<li><a href="/consumos.jsp" style="text-decoration:none">Consumos</a></li>
-    		<li><a href="/fichasvacas.jsp" style="text-decoration:none">Fichas vacas</a></li>
-    		<li><a href="/fichascorderos.jsp" style="text-decoration:none">Fichas corderos</a></li>
-    		<li><a href="/gastosfijos.jsp" style="text-decoration:none">Gastos fijos</a></li>
-    		<li><a href="/incidencias.jsp" style="text-decoration:none">Incidencias</a></li>
-    		<li><a href="/log.jsp" style="text-decoration:none">Log</a></li>
-    		<li><a href="/notas.jsp" style="text-decoration:none">Notas</a></li>
-  		</ul>
-	</div>
+  		<jsp:include page="/menu.jsp"></jsp:include>
 
 <div id="central">
 	<p>Ola k ase?</p>
-	<input type="submit" value="Submit">
 </div>
 
 </body>

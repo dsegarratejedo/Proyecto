@@ -20,14 +20,20 @@ h1{
 	z-index: 2;
 	position: relative;
 	background-color: #3bafda;
-	/*padding-bottom: 5px;
-	padding-top: 5px;*/
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+ul {
+	margin: 0px;
 }
 
 li{
 	display:inline;	
-	border-right: 1px solid;
+	border-right: 1px solid white;
 	background-color: #3bafda;
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
 
 a{
