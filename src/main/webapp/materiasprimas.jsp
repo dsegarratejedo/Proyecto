@@ -13,7 +13,7 @@
 <head>
     <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
-    <link type="text/css" rel="stylesheet" href="/stylesheets/lotes.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/materiasprimas.css">
     
     <title>Control de costes de gandería</title>
     
@@ -34,35 +34,79 @@
 	<jsp:include page="/menu.jsp"></jsp:include>
 
 <div id="central">
-
+	<h1>Materia prima:</h1>
 	<form action="/servletmateriaprima" method="post">
-    	<div>
-    		<h1>Materia prima:</h1>
-    		
-    		<table>
-    			<tr><td>ID:</td>
-    				<td><input type="text" name="id"></td>
-    			</tr>
-    			<tr><td>Descripción: </td>
-    				<td><textarea name="descripcion" rows="3" cols="60"></textarea></td>
-    			</tr>
-    			<tr><td>Existencias:</td>
-    				<td><input type="text" name="existencias"></td>
-    			</tr>
-    		</table>
-    		<div><input type="submit" value="Añadir"/></div>
-    		
-    	</div>
-	</form>
+	<div id="izquierdo">
+		<div id="formulario_materias">
+			<div>
+	    		<table>
+	    			<tr><td>ID:</td>
+	    				<td><input type="text" name="id"></td>
+	    			</tr>
+	    			<tr><td>Descripción: </td>
+	    				<td><textarea name="descripcion" rows="3" cols="40"></textarea></td>
+	    			</tr>
+	    			<tr><td>Existencias:</td>
+	    				<td><input type="text" name="existencias"></td>
+	    			</tr>
+	    		</table>
+	    		<div><input name="guardar" type="submit" value="Guardar"/></div>
+	    	</div>
 	<%
 		
 		if(descripcion!=null){
 	%>
-		<p>Nueva materia prima: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion), ${fn:escapeXml(existencias)}</p>
+		<p>Nueva materia prima: ${fn:escapeXml(id)}, ${fn:escapeXml(descripcion)}, ${fn:escapeXml(existencias)}</p>
 		
 	<%
-		}else{}
+		}
 	%>
+	
+	</div>
+		
+	<%
+		List<MateriaPrima> materias = ObjectifyService.ofy()
+			.load()
+			.type(MateriaPrima.class)
+			.order("id")
+			.list();
+	%>
+		
+	</div>
+		
+		<div id="resumen_materias">
+			<table id="tabla_lotes" >
+	    			<tr><th WIDTH="25px"><input name="borrar" type="image" src="/img/papelera.png" value="Borrar" id="botonborrar"/> </th>
+	    				<th WIDTH="50px">ID</th>
+	    				<th>Descripción</th>
+	    				<th>Existencias</th>
+	    			</tr>
+	    				<%
+	    					
+							for(MateriaPrima materia : materias){
+								pageContext.setAttribute("id", materia.getId());
+								pageContext.setAttribute("descripcion", materia.getDescripcion());
+								pageContext.setAttribute("existencias", materia.getExistencias());
+								String m = materia.getId();
+						%>
+				    		<tr id="fila"><td><input type="checkbox" name="check" value=<%=m%>></td>
+				    			<td>${fn:escapeXml(id)}</td>
+				    			<td>${fn:escapeXml(descripcion)}</td>
+				    			<td>${fn:escapeXml(existencias)}</td>
+				    				
+				    		</tr>
+				    		
+				    		<script>
+		    					document.getelementbyid("check").setvalue(materia.getId());
+		    				</script>
+				    		
+		    			<%
+		    				
+							}
+						%>
+	    		</table>
+			</div>
+		</form>
 </div>
 
 </body>

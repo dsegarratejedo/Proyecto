@@ -1,5 +1,5 @@
 #central{
-	width: 80%;
+	width: 85%;
 	margin: 0 auto;
 }
 
@@ -49,6 +49,23 @@ a.text{
 	padding-top: 5px;
 }
 
+#fila:hover {
+	background-color: #f1f1f1;
+}
+
 table {
 	text-align: justify;
+}
+
+td {
+	vertical-align: top;
+}
+
+#botonborrar{
+	border: 0px;
+	background: none;
+}
+
+textarea {
+	margin-bottom: 10px;
 }

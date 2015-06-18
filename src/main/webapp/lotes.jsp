@@ -40,14 +40,15 @@
 	    	<div>
 	    		<table>
 	    			<tr><td>ID:</td>
-	    				<td><input type="text" name="id"></td>
+	    				<td><input type="text" name="id" id="id_input"></td>
 	    			</tr>
 	    			<tr><td>Descripción: &nbsp</td>
-	    				<td><textarea name="descripcion" rows="3" cols="40"></textarea></td>
+	    				<td><textarea name="descripcion" rows="3" cols="40" id="descripcion_input"></textarea></td>
 	    			</tr>
 	    		</table>
 	    		<div><input name="guardar" type="submit" value="Guardar"/></div>
 	    	</div>
+			
 			
 			
 			<%
@@ -66,45 +67,44 @@
 					.type(Lote.class)
 					.order("id")
 					.list();
-				
 			%>
 		
 		</div>
 	
 		<div id="resumen_lotes">
 			<table id="tabla_lotes" >
-	    			<tr><th WIDTH="50px"><input name="borrar" type="submit" value="Borrar"/> </td>
-	    				<th WIDTH="100px">ID</td>
+	    			<tr><th><input name="borrar" type="image" src="/img/papelera.png" value="Borrar" id="botonborrar"/> </th>
+	    				<th>ID</td>
 	    				<th>Descripción</td>
 	    			</tr>
 	    				<%
-	    					
 							for(Lote lote : lotes){
-								pageContext.setAttribute("lote_id", lote.getId());
-								pageContext.setAttribute("lote_descripcion", lote.getDescripcion());
+								pageContext.setAttribute("id", lote.getId());
+								pageContext.setAttribute("descripcion", lote.getDescripcion());
 								String l = lote.getId();
+								String d = lote.getDescripcion();
 						%>
-				    		<tr><td><input type="checkbox" name="check" value=<%=l%>></td>
-				    			<td>${fn:escapeXml(lote_id)}</td>
-				    			<td>${fn:escapeXml(lote_descripcion)}</td>
-				    				
+				    		<tr id="fila" onclick="pulsado(1, 2)"><td><input type="checkbox" name="check" value=<%=l%>></td>
+				    			<td>${fn:escapeXml(id)}</td>
+				    			<td>${fn:escapeXml(descripcion)}</td>
 				    		</tr>
-				    		
-				    		
-				    		
 				    		<script>
 		    					document.getelementbyid("check").setvalue(lote.getId());
 		    				</script>
-				    		
 		    			<%
-		    				
 							}
 						%>
-	    		</table>
+	    	</table>
 		</div>
 	</form>
 	
 </div>
+<script>
+	function pulsado(id, desc){
+		document.getElementById("id_input").value = id;
+		document.getElementById("descripcion_input").value = desc;
+	}
+</script>
 
 </body>
 </html>
