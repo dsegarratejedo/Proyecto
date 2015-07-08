@@ -28,16 +28,20 @@ public class LotesServlet extends HttpServlet{
 					.list();   
 		 
 		 if(req.getParameter("guardar")!=null){
-		    String id = req.getParameter("id");
-		    String descripcion = req.getParameter("descripcion");
-		    Lote lote = new Lote(id, descripcion);
-		    
-		    if(!lotes.contains(lote)){
-			    ObjectifyService.ofy().save().entity(lote).now();
-			    resp.sendRedirect("/lotes.jsp?descripcion=" + lote.descripcion + "&id=" + lote.id);
-		    }else{
-		    	resp.sendRedirect("/lotes.jsp?descripcion=" + "ERROR" + "&id=" + "IDERROR");
-		    }
+			 if(!req.getParameter("id").equals("") || !req.getParameter("descripcion").equals("")){
+			    String id = req.getParameter("id");
+			    String descripcion = req.getParameter("descripcion");
+			    Lote lote = new Lote(id, descripcion);
+			    
+			    if(!lotes.contains(lote)){
+				    ObjectifyService.ofy().save().entity(lote).now();
+				    resp.sendRedirect("/lotes.jsp?descripcion=" + lote.descripcion + "&id=" + lote.id);
+			    }else{
+			    	resp.sendRedirect("/lotes.jsp?descripcion=" + "ERROR" + "&id=" + "IDERROR");
+			    }
+			 }else{
+				 resp.sendRedirect("/lotes.jsp");
+			 }
 		 }
 		 
 		 if(req.getParameter("borrar")!=null){

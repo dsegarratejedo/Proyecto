@@ -73,8 +73,8 @@
 	
 		<div id="resumen_lotes">
 			<table id="tabla_lotes" >
-	    			<tr><th><input name="borrar" type="image" src="/img/papelera.png" value="Borrar" id="botonborrar"/> </th>
-	    				<th>ID</td>
+	    			<tr><th><input name="borrar" type="submit" value="Borrar" id="botonborrar"/> </th>
+	    				<th WIDTH="50px">ID &nbsp</td>
 	    				<th>Descripción</td>
 	    			</tr>
 	    				<%
@@ -84,8 +84,8 @@
 								String l = lote.getId();
 								String d = lote.getDescripcion();
 						%>
-				    		<tr id="fila" onclick="pulsado(1, 2)"><td><input type="checkbox" name="check" value=<%=l%>></td>
-				    			<td>${fn:escapeXml(id)}</td>
+				    		<tr id="fila"><td><input type="checkbox" name="check" value=<%=l%>></td>
+				    			<td>${fn:escapeXml(id)} &nbsp</td>
 				    			<td>${fn:escapeXml(descripcion)}</td>
 				    		</tr>
 				    		<script>

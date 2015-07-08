@@ -43,10 +43,10 @@
 	    			<tr><td>ID:</td>
 	    				<td><input type="text" name="id"></td>
 	    			</tr>
-	    			<tr><td>Descripción: </td>
+	    			<tr><td>Descripción: &nbsp</td>
 	    				<td><textarea name="descripcion" rows="3" cols="40"></textarea></td>
 	    			</tr>
-	    			<tr><td>Existencias:</td>
+	    			<tr><td>Existencias:&nbsp</td>
 	    				<td><input type="text" name="existencias"></td>
 	    			</tr>
 	    		</table>
@@ -76,9 +76,9 @@
 		
 		<div id="resumen_materias">
 			<table id="tabla_lotes" >
-	    			<tr><th WIDTH="25px"><input name="borrar" type="image" src="/img/papelera.png" value="Borrar" id="botonborrar"/> </th>
+	    			<tr><th WIDTH="25px"><input name="borrar" type="submit" value="Borrar" id="botonborrar"/> </th>
 	    				<th WIDTH="50px">ID</th>
-	    				<th>Descripción</th>
+	    				<th>Descripción &nbsp</th>
 	    				<th>Existencias</th>
 	    			</tr>
 	    				<%
@@ -90,8 +90,8 @@
 								String m = materia.getId();
 						%>
 				    		<tr id="fila"><td><input type="checkbox" name="check" value=<%=m%>></td>
-				    			<td>${fn:escapeXml(id)}</td>
-				    			<td>${fn:escapeXml(descripcion)}</td>
+				    			<td>${fn:escapeXml(id)} &nbsp</td>
+				    			<td>${fn:escapeXml(descripcion)} &nbsp</td>
 				    			<td>${fn:escapeXml(existencias)}</td>
 				    				
 				    		</tr>

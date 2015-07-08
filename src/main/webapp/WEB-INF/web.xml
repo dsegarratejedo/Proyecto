@@ -23,6 +23,15 @@
       <url-pattern>/servletmateriaprima</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+      <servlet-name>servletcompra</servlet-name>
+      <servlet-class>com.proyecto.ControlCostesGanaderia.CompraServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>servletcompra</servlet-name>
+      <url-pattern>/servletcompra</url-pattern>
+    </servlet-mapping>
+    
     <filter>
     	<filter-name>ObjectifyFilter</filter-name>
     	<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>

@@ -27,20 +27,24 @@ public class MateriaPrimaServlet extends HttpServlet{
 					.list(); 
 	 
 		 if(req.getParameter("guardar")!=null){
-		    String id = req.getParameter("id");
-		    String descripcion = req.getParameter("descripcion");
-		    String existenciasString = req.getParameter("existencias");
-		    float existencias = Float.parseFloat(existenciasString);
-		    
-		    MateriaPrima materiaprima = new MateriaPrima(id, descripcion, existencias);
-		    if(!materias.contains(materiaprima)){
-			    ObjectifyService.ofy().save().entity(materiaprima).now();
-			    resp.sendRedirect("/materiasprimas.jsp?id=" + materiaprima.id + 
-		    		"&descripcion=" + materiaprima.descripcion +
-		    		"&existencias=" + existenciasString);
-		    }else{
-		    	resp.sendRedirect("/lotes.jsp?descripcion=" + "ERROR" + "&id=" + "IDERROR");
-		    }
+			 if(!req.getParameter("id").equals("") || !req.getParameter("descripcion").equals("") || !req.getParameter("existencias").equals("")){
+			    String id = req.getParameter("id");
+			    String descripcion = req.getParameter("descripcion");
+			    String existenciasString = req.getParameter("existencias");
+			    float existencias = Float.parseFloat(existenciasString);
+			    
+			    MateriaPrima materiaprima = new MateriaPrima(id, descripcion, existencias);
+			    if(!materias.contains(materiaprima)){
+				    ObjectifyService.ofy().save().entity(materiaprima).now();
+				    resp.sendRedirect("/materiasprimas.jsp?id=" + materiaprima.id + 
+			    		"&descripcion=" + materiaprima.descripcion +
+			    		"&existencias=" + existenciasString);
+			    }else{
+			    	resp.sendRedirect("/lotes.jsp?descripcion=" + "ERROR" + "&id=" + "IDERROR");
+			    }
+			 }else{
+				 resp.sendRedirect("/materiasprimas.jsp");
+			 }
 		 }
 		 
 		 if(req.getParameter("borrar")!=null){

@@ -61,9 +61,12 @@ td {
 	vertical-align: top;
 }
 
+th{
+	margin-right: 10px;
+}
+
 #botonborrar{
-	border: 0px;
-	background: none;
+	margin-right: 10px;
 }
 
 textarea {
